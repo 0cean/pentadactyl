@@ -1,0 +1,135 @@
+"1.0b7.2 "(created 2011/08/05 11:03:59)"
+
+loadplugins '\.(js|penta)$'
+group user
+colorscheme mac
+set guioptions=BbCrsn
+" vim: set ft=pentadactyl:
+"" ==================================================
+"" 读取脚本扩展
+"" ==================================================
+"" 各种设置
+"" ==================================================
+set titlestring="pentadactyl by Firefox"
+"" ==================================================
+"" 键盘映射
+"" ==================================================
+""
+"" 操作控制(由于Firefox4的Panorama功能，放弃Vimp原有的切换标签改用Firefox自带快捷键)
+""
+" 切换至上一个标签
+map , <C-tab>
+" 切换至下一个标签
+map m <C-S-tab>
+" 往上移动一个标签
+noremap Q :tabmove! +1<CR>
+" 往下移动一个标签
+noremap W :tabmove! -1<CR>
+" 把翻页移至as
+map a k
+map s j
+" xz xc 回格键对该标签历史回溯
+"map xz :ba<space><tab>
+"map xc :fo<space><tab>
+noremap  h <C-o>
+noremap  i <C-i>
+" 翻页单手版
+noremap eq [[
+noremap ew ]]
+" 关闭标签 （Panorama兼容模式）
+noremap d <C-w>
+	""
+""各种基本命令的扩展化
+""
+" 以e起始的取消该标签的所有键盘映射忽略（feedsomekey）
+map et :tabopen<space>
+map eo :open<space>
+map ed :bd<CR>
+map er :reload<CR>
+map eR :reload!<CR>
+map ef ;o
+map eF ;t
+map eu :u<CR>
+" Tabopen增强版
+map tt :tabopen<space>
+map tg :tabopen<space>google<space>
+map tw :tabopen<space>wiki<space>
+map tf :tabopen<space>ff<space>
+map tj :tabopen<space>js<space>
+map tb :tabopen<space>baidu<space>
+" 把剪贴板的URL贴至新标签上
+noremap pp P
+" 把选中的URL直接跳转至新标签
+noremap po YP
+noremap pg Y:tabopen<space>google<space><C-v><C-v><CR>
+noremap pw Y:tabopen<space>wiki<space><C-v><C-v><CR>
+" 直接进入拷URL的HintMode
+map <C-c> ;y
+" 取消载入
+map <C-d> :stop<CR>
+" 切换页面编码
+noremap ,es :set encoding=Shift_JIS<CR>
+noremap ,ec :set encoding=EUC-JP<CR>
+noremap ,eu :set encoding=UTF-8<CR>
+noremap ,eg :set encodeing=GB2312<CR>
+""
+"" 界面控制相关Keymaps
+""
+" 显示地址栏菜单栏搜索栏
+map <C-Up> :set guioptions=BbCrsnTm<CR>
+" 隐藏地址栏菜单栏搜索栏
+map <C-Down> :set guioptions=BbCrsn<CR>
+" 呼出侧边栏列表
+map S :sidebar<space><S-tab>
+" 呼出菜单栏列表
+map V :emenu<space>
+" 呼出撤销列表
+map U :u<space><tab><S-tab>
+
+"" ==================================================
+"" 快速链接
+"" ==================================================
+""
+" Gmail Commando
+noremap <leader>gg :gmail (label:appinn OR label:againstgfw) AND is:unread<CR>
+noremap <leader>gr :gmail label:reminder is:unread<CR>
+noremap <leader>gt :gmail label:twitter is:unread<CR>
+noremap <leader>gc :gmail is:chat AND -xmpptunnel -@appspot.com -bot@<CR>
+" qmarks 快速打开
+qmark t https://twitter.com
+qmark m https://mail.google.com
+qmark r https://www.google.com/reader
+qmark v http://coderepos.org/share/browser/lang/javascript/vimperator-plugins/trunk
+qmark u http://www.tumblr.com/dashboard
+qmark g http://www.rememberthemilk.com
+qmark s http://www.smzdm.com
+qmark b http://www.taobao.com
+qmark o http://oceanl.info
+" buffers 快速打开
+noremap bm :buffer gmail<CR>
+noremap br :buffer google reader<CR>
+noremap bt :buffer twitter<CR>
+noremap bd :buffer mldonkey<CR>
+noremap bg :buffer remember the milk<CR>
+noremap bh :buffer Hootsuite<CR>
+noremap ba :buffer about:blank<CR>
+" 快速调用书签
+noremap bn :bmarks<space>
+""
+"" -------------------------------------------------------
+""
+"" ==================================================
+"" 各种脚本的快速命令
+"" ==================================================
+""
+" 快速启用j.mp缩短网址
+noremap J :jmp<CR>
+" 快速复制
+noremap cd :copy titleAndURL<CR>
+noremap ca :copy anchor<CR>
+noremap cs :copy selanchor<CR>
+noremap cb :copy htmlblockquote<CR>
+""
+"" --------------------------------------------------
+"" 短网址
+noremap ll :shorten<CR>
